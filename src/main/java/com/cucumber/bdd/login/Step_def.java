@@ -20,50 +20,88 @@ WebDriver driver;
 	@Given("go to app link")
 	public void go_to_app_link() {
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		try {
+	        Thread.sleep(3000); // Pause for 3 seconds
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
+
 	}
 
 	@When("enter valid username")
 	public void enter_valid_username() {
 		driver.findElement(By.xpath("//*[@name='username']")).sendKeys("Admin");
+		try {
+	        Thread.sleep(2000);
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	@When("enter valid password")
 	public void enter_valid_password() {
 		driver.findElement(By.xpath("//*[@name='password']")).sendKeys("admin123");
+		try {
+	        Thread.sleep(2000);
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	@When("click login button")
 	public void click_login_button() {
-		driver.findElement(By.xpath("//*[class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")).click();
+		driver.findElement(By.xpath("//*[@type='submit']")).click();
+		try {
+	        Thread.sleep(3000);
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
+
 	}
 
 	@Then("login should pass and there should be logout button visible")
 	public void login_should_pass_and_there_should_be_logout_button_visible() {
-		Boolean status = driver.findElement(By.xpath("//*[@id='logoutButton']")).isDisplayed();
-		System.out.println("Log out button there or not = " + status);
-
-	driver.quit();
+		driver.findElement(By.xpath("//*[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']")).click();
+Boolean status =	driver.findElement(By.xpath("//*[@class='oxd-userdropdown-link']")).isDisplayed();
+		
+		System.out.println("Login passed logout button is visible = " + status);
+		
+		driver.quit();
 	}
 
 	@When("enter invalid username")
 	public void enter_invalid_username() {
 		driver.findElement(By.xpath("//*[@name='username']")).sendKeys("sarower");
+		try {
+	        Thread.sleep(2000);
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	@When("enter invalid password")
 	public void enter_invalid_password() {
 		driver.findElement(By.xpath("//*[@name='password']")).sendKeys("sarower21312@");
+		try {
+	        Thread.sleep(2000);
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	@Then("login fails and no logout button")
 	public void login_fails_and_no_logout_button() {
+		Boolean status;
 		try {
-			Boolean status = driver.findElement(By.xpath("//*[@id='logoutButton']")).isDisplayed();
-			System.out.println("Log out button there or not = " + status);
+			driver.findElement(By.xpath("//*[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']")).click();
+			status = driver.findElement(By.xpath("//*[@class='oxd-userdropdown-link']")).isDisplayed();
+			System.out.println("Logout botton not = " + status);
+		
 		} catch (Exception e) {
-			
+		
 		}
-	    driver.quit();
+		driver.quit();
+
 	}
 
 }
