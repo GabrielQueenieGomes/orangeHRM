@@ -12,6 +12,7 @@ And enter valid password
 And click login button
 Then login should pass and there should be logout button visible
 
+
 @Negative
 Scenario: check login function with invalid credentials 
 When enter invalid username
@@ -49,3 +50,13 @@ Scenario: check login function with valid username and empty password
 When enter valid username
 And click login button
 Then login fails and no logout button
+
+Example:
+|User |Pass |
+|Admin |admin123 |
+|sarower |sarower21312@ |
+|sarower |admin123 |
+|Admin |sarower21312@ |
+|  |  |
+|  |admin123 |
+|Admin |  |
