@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "C:\Users\Queenie\Downloads\testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="OHRMTest">
+  <classes>
+  <class name="com.runner.Runner"></class>
+  </classes>
+  </test> <!-- OHRMTest -->
+</suite> <!-- Suite -->
