@@ -23,7 +23,6 @@ WebDriver driver;
 		options.addArguments("--disable-dev-shm-usage");
 
 		driver = new ChromeDriver(options);
-		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 	}
 
@@ -76,7 +75,6 @@ Boolean status =	driver.findElement(By.xpath("//*[@class='oxd-userdropdown-link'
 		
 		System.out.println("Login passed logout button is visible = " + status);
 		
-		driver.quit();
 	}
 
 	@When("enter invalid username")
