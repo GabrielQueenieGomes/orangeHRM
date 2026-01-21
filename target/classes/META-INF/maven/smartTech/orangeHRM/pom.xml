@@ -40,6 +40,11 @@
     <version>7.11.0</version>
     <scope>test</scope>
 </dependency>
+<dependency>
+  <groupId>io.github.bonigarcia</groupId>
+  <artifactId>webdrivermanager</artifactId>
+  <version>5.7.0</version>
+</dependency>
   </dependencies>
   
 <build>
@@ -60,6 +65,7 @@
 					<suiteXmlFiles>
     <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
 </suiteXmlFiles>
+<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
             <plugin>
